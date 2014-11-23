@@ -56,7 +56,7 @@ io.on('connection', function(socket){
 
 
   socket.on("post image", function(data){
-    io.emit("rcv image", { file: data.img_jpeg_src, name: data.name, maxSize: data.maxSize } );
+    io.emit("rcv image", { file: data.file, name: data.name, maxSize: data.maxSize } );
   });
 
 });
