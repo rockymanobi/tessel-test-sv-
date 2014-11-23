@@ -6,14 +6,13 @@
 <script type="text/javascript">
   var socket = io();
   
-  
   socket.on("rcv image", function( data ){
-      alert("rcv image!!");
+      console.log( "rcv image!" );
       console.log( data.file );
   });
 
   function kick(){
-    console.log(1111);
+    console.log("kick");
     socket.emit("kickServo command");
   }
 
