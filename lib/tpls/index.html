@@ -5,10 +5,17 @@
 
 <script type="text/javascript">
   var socket = io();
+  
+  
+  socket.on("rcv image", function( data ){
+      alert("rcv image!!");
+      console.log( data.file );
+  });
 
   function kick(){
     console.log(1111);
     socket.emit("kickServo command");
   }
+
 
 </script>
