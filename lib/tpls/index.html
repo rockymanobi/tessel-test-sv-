@@ -5,9 +5,10 @@
 <img src="" id="photo">
 
 <script type="text/javascript">
+
+  var socket = io();
   $(document).ready(function(){
 
-    var socket = io();
     
     socket.on("rcv image", function( data ){
         console.log( "rcv image!" );
