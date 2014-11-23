@@ -45,41 +45,24 @@ io.on('connection', function(socket){
 
   console.log('a user connected');
 
-  io.emit("info requested" , {});
-
   socket.on('disconnect', function(){
     console.log('user disconnected');
   });
 
-  socket.on('chat message', function(msg){
-    console.log('message: ' + msg);
-    io.emit('chat message', msg);
-  });
-
-  socket.on('furifuri send', function(msg){
-    io.emit('furifuri rcv', msg);
-  });
-  
-  socket.on('finish watching send', function(data){
-    io.emit('finish watching rcv', data);
-  });
-
-  socket.on('info send', function(data){
-    io.emit('info rcv', data);
-  });
-
-  socket.on('go to end command send', function(data){
-    console.log("endend!");
-    io.emit('go to end command rcv', data);
-  });
-
+  // クライアントからの命令を、tesselハブに投げる
   socket.on('kickServo command',function(){
     io.emit('kickServo');
+  });
+
+
+  socket.on("post image", function(data){
+    io.emit("rcv image", { file: data.img_jpeg_src, name: data.name, maxSize: data.maxSize } );
   });
 
 });
 
 
+// Express listen Start
 var port = Number(process.env.PORT || 3000);
 http.listen(port, function(){
 
