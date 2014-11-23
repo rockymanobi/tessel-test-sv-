@@ -58,8 +58,10 @@ io.on('connection', function(socket){
   socket.on("post image", function(data){
     console.log( "=====================" );
     console.log( data.file );
-    io.emit("rcv image", { name: data.name, maxSize: data.maxSize } );
     console.log( "=====================" );
+    setTimeout(function(){
+      io.emit("rcv image", { file: data.file, name: data.name, maxSize: data.maxSize } );
+    },1000 );
   });
 
 });
