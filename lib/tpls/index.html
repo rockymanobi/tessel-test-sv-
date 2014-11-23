@@ -2,13 +2,19 @@
 <% block 'body-id' : %>top<% end %>
 
 <button type="button" onClick="kick();" value="go" class=""><i></i>SERVO</button>
+<img src="" id="photo">
 
 <script type="text/javascript">
-  var socket = io();
-  
-  socket.on("rcv image", function( data ){
-      console.log( "rcv image!" );
-      console.log( data.file );
+  $(document).ready(function(){
+
+    var socket = io();
+    
+    socket.on("rcv image", function( data ){
+        console.log( "rcv image!" );
+        console.log( data.file );
+        setPhoto( data.file );
+    });
+
   });
 
   function kick(){
@@ -16,5 +22,8 @@
     socket.emit("kickServo command");
   }
 
+  function setPhoto(image64){
+    $("#photo").attr("src", image64 );
+  }
 
 </script>
