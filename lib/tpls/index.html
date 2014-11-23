@@ -1,0 +1,14 @@
+<% extend 'layout' %>
+<% block 'body-id' : %>top<% end %>
+
+<button type="button" onClick="kick();" value="go" class=""><i></i>SERVO</button>
+
+<script type="text/javascript">
+  var socket = io();
+
+  function kick(){
+    console.log(1111);
+    socket.emit("kickServo command");
+  }
+
+</script>

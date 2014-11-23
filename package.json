@@ -1,0 +1,22 @@
+{
+  "name": "photosho-sv-sample",
+  "version": "0.0.1",
+  "description": "sample",
+  "main": "web.js",
+  "scripts": {
+    "test": "test"
+  },
+  "author": "rocky-manobi",
+  "license": "MIT",
+  "dependencies" : {
+    "express" : "latest",
+    "socket.io" : "latest",
+    "method-override": "~1.0.0",
+    "connect-busboy": "latest",
+    "ect": "latest"
+  },
+  "devDependencies": {
+    "node-dev": "latest"
+  }
+  
+}

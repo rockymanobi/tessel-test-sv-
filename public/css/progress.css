@@ -1,0 +1,75 @@
+.COMPONENT-PROGRESS{
+  position: fixed;
+  top: 0;
+  bottom:0;
+  left: 0;
+  right: 0;
+  min-height: 800px;
+  background-color: black;
+  display: none;
+  z-index: 99999;
+  opacity: 0;
+  transition: opacity 0.3s;
+  -webkit-transition: opacity 0.3s;
+  -ms-transition: opacity 0.3s;
+  -moz-transition: opacity 0.3s;
+}
+
+.COMPONENT-PROGRESS.ACTIVE{
+  display: block;
+}
+
+.COMPONENT-PROGRESS.VISIBLE{
+  opacity: 1;
+}
+  /* イメージとかその辺りの設定 */
+  .COMPONENT-PROGRESS p{
+    margin-top: 50px;
+    display: block;
+    width: 100%;
+    text-align:center;
+    font-size: 24px;
+  }
+  .COMPONENT-PROGRESS .PROGRESS-IMAGE{
+    display: block;
+    margin: 80px auto;
+  }
+
+  /* アニメーションの設定 */
+  .COMPONENT-PROGRESS .PROGRESS-IMAGE{
+    -webkit-animation-name: spin;
+    -webkit-animation-duration: 3000ms;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-timing-function: linear;
+    -moz-animation-name: spin;
+    -moz-animation-duration: 3000ms;
+    -moz-animation-iteration-count: infinite;
+    -moz-animation-timing-function: linear;
+    -ms-animation-name: spin;
+    -ms-animation-duration: 3000ms;
+    -ms-animation-iteration-count: infinite;
+    -ms-animation-timing-function: linear;
+    
+    animation-name: spin;
+    animation-duration: 3000ms;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+  }
+
+
+@-ms-keyframes spin {
+  from { -ms-transform: rotate(0deg); }
+  to { -ms-transform: rotate(360deg); }
+}
+@-moz-keyframes spin {
+  from { -moz-transform: rotate(0deg); }
+  to { -moz-transform: rotate(360deg); }
+}
+@-webkit-keyframes spin {
+  from { -webkit-transform: rotate(0deg); }
+  to { -webkit-transform: rotate(360deg); }
+}
+@keyframes spin {
+  from { transform:rotate(0deg);}
+  to { transform:rotate(360deg);}
+}

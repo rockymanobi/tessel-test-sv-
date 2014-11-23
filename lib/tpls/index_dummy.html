@@ -1,0 +1,49 @@
+<% extend 'layout' %>
+<% block 'body-id' : %>top<% end %>
+
+<form method="POST" id="image-upload-form" enctype="multipart/form-data" action="/upload2">
+<fieldset>
+<!-- <legend>ファイルサイズとファイルを選択</legend> -->
+
+<label>
+	<span>写真をえらぶ</span>
+	<div class="inputfile_wrap">
+		<div class="bummybtn">＋</div>
+    <span id="inputfile"><input name="image" type="file" accept="image/jpeg, image/gif, image/png" ></span>
+	</div>
+</label>
+
+<label>
+	<span>横か縦の最大サイズは？</span>
+	<span class="select_wrap">
+		<select name="max-length" type="number">
+			<option value="100">100px</option>
+			<option value="300">300px</option>
+			<option value="600">600px</option>
+			<option value="800" selected>800px</option>
+		</select>
+	</span>
+</label>
+
+<input type="hidden" id="image64" name="image64" value="" />
+
+</fieldset>
+
+<div class="submit_wrap hide">
+	<button type="submit" value="go" class="upload-image-button"><i></i>Photoshopに送る</button>
+</div>
+
+</form>
+
+
+<button type="button" onClick="kick();" value="go" class=""><i></i>SERVO</button>
+
+<script type="text/javascript">
+  var socket = io();
+
+  function kick(){
+    console.log(1111);
+    socket.emit("kickServo command");
+  }
+
+</script>

@@ -1,0 +1,95 @@
+
+
+
+
+<img id="js-preview-photo" src="http://dummyimage.com/100x100" alt="preview" style="position: absolute; top: -1000px;">
+<p>
+  <input id="js-select-photo" type="file" name="photo">
+</p>
+
+<form method="POST" enctype="multipart/form-data" action="/upload2">
+<fieldset>
+<!-- <legend>ファイルサイズとファイルを選択</legend> -->
+
+<label>
+	<span>写真をえらぶ</span>
+	<div class="inputfile_wrap">
+		<div class="bummybtn">＋</div>
+		<input name="image" type="file" accept="image/jpeg, image/gif, image/png" >
+	</div>
+</label>
+
+<input type="hidden" id="hoge" name="imageimage" value="" />
+
+
+<label>
+	<span>横か縦の最大サイズは？</span>
+	<span class="select_wrap">
+		<select name="max-length" type="number">
+			<option value="100">100px</option>
+			<option value="300">300px</option>
+			<option value="600">600px</option>
+			<option value="800" selected>800px</option>
+		</select>
+	</span>
+</label>
+
+
+</fieldset>
+
+<div class="submit_wrap">
+	<button type="submit" value="go" class="upload-image-button"><i></i>Photoshopに送る</button>
+</div>
+
+</form>
+
+
+
+
+<script type="text/javascript" src="/js/megapix-image.js"></script>
+<script type="text/javascript">
+
+
+var mpImg;
+var hogehoge;  
+hoge = (function(){
+  var elFileInput = document.getElementById('js-select-photo'),
+  elPreview   = document.getElementById('js-preview-photo'),
+  createObjectURL = window.webkitURL && window.webkitURL.createObjectURL;
+
+  if (!createObjectURL) {
+    throw new Error('This browser is not supported for `createObjectURL`');
+  }
+
+  // ここではサンプルとして、選択された画像を0.5倍に縮小し、画質80のJPEGで書き出す
+  var RESIZE_RATIO = 0.1,
+      JPEG_QUALITY = 0.8;
+
+  elFileInput.addEventListener('change', function(evt) {
+
+    var file = evt.target.files[0],
+    image = document.getElementById('js-preview-photo');
+
+    mpImg = new MegaPixImage(file);
+    // Render resized image into image element using quality option.
+    // Quality option is valid when rendering into image element.
+    
+    mpImg.render(image, {maxWidth: 600, maxHeight: 600});
+
+    image.onload = function(){
+      var hogeEl = document.getElementById('hoge');
+      hogeEl.value = image.src;
+    };
+
+
+
+
+    return;
+
+  }, false);
+});
+
+setTimeout(hoge, 2000);
+
+</script>
+<img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4QBMRXhpZgAATU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAABLKADAAQAAAABAAAAlgAAAAD/2wBDAAIBAQIBAQICAQICAgICAwUDAwMDAwYEBAMFBwYHBwcGBgYHCAsJBwgKCAYGCQ0JCgsLDAwMBwkNDg0MDgsMDAv/2wBDAQICAgMCAwUDAwULCAYICwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwv/wAARCACWASwDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD+f+iiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigD/2Q==">
